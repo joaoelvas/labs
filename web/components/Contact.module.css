@@ -1,0 +1,48 @@
+.section {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  text-align: center;
+}
+
+.star {
+  display: block;
+  margin: 0 auto 28px;
+}
+
+.heading {
+  margin: 0 auto;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h2-contact);
+  letter-spacing: var(--tracking-h2);
+  line-height: 1.04;
+  max-width: 820px;
+}
+
+.body {
+  margin: 22px auto 0;
+  color: var(--text-muted);
+  font-size: 19px;
+  max-width: 520px;
+}
+
+.actions {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.actions a {
+  padding-left: 28px;
+  padding-right: 28px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding-top: 88px;
+    padding-bottom: 88px;
+  }
+}

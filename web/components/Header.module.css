@@ -1,0 +1,90 @@
+.header {
+  border-bottom: 1px solid var(--ink-800);
+  background: var(--header-bg);
+}
+
+.inner {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: var(--touch);
+  text-decoration: none;
+  color: var(--text);
+}
+
+.wordmark {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: var(--tracking-wordmark);
+  text-transform: uppercase;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.link,
+.lang {
+  padding: 12px 14px;
+  min-height: var(--touch);
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 15px;
+  color: var(--text-nav);
+}
+
+.link[aria-current="page"] {
+  color: var(--text);
+}
+
+.lang {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: var(--tracking-eyebrow);
+}
+
+.cta {
+  margin-left: 8px;
+  padding: 11px 18px;
+  min-height: var(--touch);
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  border: 1px solid var(--accent);
+  border-radius: var(--r-pill);
+  color: var(--text);
+}
+
+.cta:hover {
+  background: var(--accent);
+  color: var(--text-dark);
+}
+
+/* Phones: in-page section links are reachable by scrolling; only links to other
+   pages stay, so the bar keeps to one tidy row. */
+@media (max-width: 640px) {
+  .link:not(.pageLink) {
+    display: none;
+  }
+
+  .cta {
+    margin-left: 0;
+  }
+}

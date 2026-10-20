@@ -1,0 +1,25 @@
+.footer {
+  border-top: 1px solid var(--ink-800);
+}
+
+.inner {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: var(--fs-small);
+  color: var(--text-faint);
+}
+
+.parent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.parent svg {
+  flex: none;
+}

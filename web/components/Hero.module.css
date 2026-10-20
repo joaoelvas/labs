@@ -1,0 +1,51 @@
+.hero {
+  padding-top: 112px;
+  padding-bottom: 88px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 56px;
+}
+
+.copy {
+  flex: 999 1 560px;
+  min-width: 0;
+}
+
+.eyebrow {
+  margin-bottom: 24px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h1);
+  line-height: 1;
+  letter-spacing: var(--tracking-display);
+}
+
+.lead {
+  margin-top: 28px;
+  font-size: var(--fs-lead);
+  color: var(--text-muted);
+  max-width: 580px;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 44px;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    gap: 40px;
+  }
+
+  .lead {
+    font-size: 18px;
+  }
+}

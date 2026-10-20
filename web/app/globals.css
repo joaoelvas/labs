@@ -1,0 +1,160 @@
+/*
+ * Venley Labs — design tokens.
+ * Mirrors design/tokens.css. The "mockup" group below is an addition: the
+ * reference uses a few extra greys inside the product mockups and nav, and
+ * they live here so components never carry raw hex values.
+ */
+:root {
+  /* Surfaces */
+  --ink-950: #0b0c0e;
+  --ink-900: #121316;
+  --ink-850: #1a1c20;
+  --ink-800: #1e2024;
+  --ink-750: #23262b;
+  --ink-700: #26292e;
+  --ink-650: #2e3137;
+  --ink-600: #34373d;
+  --paper: #f2efe7;
+
+  /* Text */
+  --text: #eceae4;
+  --text-strong: #ffffff;
+  --text-nav: #b4b7bd;
+  --text-soft: #c4c7cc;
+  --text-muted: #a3a7ae;
+  --text-faint: #8c9097;
+  --text-dark: #0b0c0e;
+  --text-dark-muted: #474a50;
+  --label-dark: #55585e;
+
+  /* Accent & brand */
+  --accent: #eceae4;
+  --gold: #c9a646; /* Venley star mark ONLY */
+  --telltale-green: #6fd69a; /* Telltale card ONLY */
+
+  /* Mockup surfaces (product illustrations only) */
+  --mock-gradient-end: #0f1012;
+  --mock-dot: #3a3d43;
+  --mock-menubar: rgba(40, 42, 47, 0.9);
+  --mock-menubar-text: #dadce0;
+  --mock-dropdown: rgba(30, 32, 36, 0.96);
+  --mock-track: #33363c;
+  --mock-reply: #1c1e22;
+  --mock-telltale-tile: #1c2a22;
+  --mock-atlas-tile: #22252a;
+  --header-bg: rgba(11, 12, 14, 0.85);
+  --strip-bg: rgba(18, 19, 22, 0.7);
+  --grid-line: rgba(255, 255, 255, 0.035);
+
+  /* Type */
+  --font-display: var(--font-inter-tight), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --fs-h1: clamp(44px, 6.4vw, 84px);
+  --fs-h2: clamp(34px, 4vw, 52px);
+  --fs-h2-contact: clamp(36px, 5vw, 64px);
+  --fs-h3-case: 32px;
+  --fs-h3: 21px;
+  --fs-lead: 20px;
+  --fs-body: 16px;
+  --fs-small: 14px;
+  --fs-mono: 13px;
+  --tracking-display: -0.035em;
+  --tracking-h2: -0.03em;
+  --tracking-h3: -0.02em;
+  --tracking-eyebrow: 0.12em;
+  --tracking-wordmark: 0.34em;
+
+  /* Layout */
+  --container: 1200px;
+  --gutter: 24px;
+  --section-y: 104px;
+  --grid-cell: 72px;
+  --touch: 44px;
+
+  /* Radii */
+  --r-card: 24px;
+  --r-panel: 16px;
+  --r-tile: 9px;
+  --r-pill: 999px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  background-color: var(--ink-950);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-cell) var(--grid-cell);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--text);
+}
+
+a:hover {
+  color: var(--text-strong);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+/* Section anchors clear the top of the viewport a little. */
+[id] {
+  scroll-margin-top: 16px;
+}
+
+/* --container is the content width; the gutters sit outside it (as in the reference). */
+.container {
+  max-width: calc(var(--container) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
