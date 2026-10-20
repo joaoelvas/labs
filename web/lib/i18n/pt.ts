@@ -13,6 +13,7 @@ export const pt: Dictionary = {
     homeLabel: "Venley Labs — início",
     nav: { work: "Trabalho", training: "Formação em IA", capabilities: "Competências", approach: "Abordagem" },
     cta: "Iniciar um projeto",
+    ctaShort: "Contactar",
     navLabel: "Principal",
     switchLabel: "Read in English",
     switchShort: "EN",

@@ -35,7 +35,8 @@ export function Header({ t, locale, page }: { t: Dictionary["header"]; locale: L
             {t.switchShort}
           </a>
           <a href="#contact" className={styles.cta}>
-            {t.cta}
+            <span className={styles.ctaFull}>{t.cta}</span>
+            <span className={styles.ctaShort}>{t.ctaShort}</span>
           </a>
         </nav>
       </div>

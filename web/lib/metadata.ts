@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { dictionaries, paths, type Locale, type Page } from "./i18n";
+import { ogPath, ogSize } from "./og";
 import { site } from "./site";
 
 export const viewport: Viewport = {
@@ -25,6 +26,13 @@ export function metadataFor(locale: Locale, page: Page = "home"): Metadata {
       url: paths[page][locale],
       locale: locale === "en" ? "en_GB" : "pt_PT",
       type: "website",
+      images: [{ url: ogPath(locale, page), ...ogSize, alt: meta.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+      images: [ogPath(locale, page)],
     },
   };
 }

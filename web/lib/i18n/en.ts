@@ -12,6 +12,7 @@ export const en = {
     homeLabel: "Venley Labs — home",
     nav: { work: "Work", training: "AI training", capabilities: "Capabilities", approach: "Approach" },
     cta: "Start a project",
+    ctaShort: "Start a project", // phones; same as `cta` when it already fits
     navLabel: "Main",
     switchLabel: "Ler em português",
     switchShort: "PT",

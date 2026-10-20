@@ -72,6 +72,10 @@
   color: var(--text);
 }
 
+.ctaShort {
+  display: none;
+}
+
 .cta:hover {
   background: var(--accent);
   color: var(--text-dark);
@@ -86,5 +90,14 @@
 
   .cta {
     margin-left: 0;
+  }
+
+  /* Longer labels (PT) would wrap the CTA onto its own row. */
+  .ctaFull {
+    display: none;
+  }
+
+  .ctaShort {
+    display: inline;
   }
 }
