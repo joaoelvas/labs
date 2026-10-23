@@ -1,0 +1,24 @@
+# Deploys web/ to the Raspberry Pi on every push to main that changes it.
+# Runs on the Pi itself (a self-hosted runner labelled "raspi"): see README.md.
+name: Deploy website
+
+on:
+  push:
+    branches: [main]
+    paths: ["web/**", ".github/workflows/deploy-web.yml"]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-web
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, raspi]
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./deploy/deploy.sh

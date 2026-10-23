@@ -55,7 +55,17 @@ npm run dev       # → http://localhost:3000
 | `npm run lint` | ESLint (Next.js config) |
 
 > [!NOTE]
-> The site uses `output: "export"`, so there's no Node server in production. Serve `web/out/` from any static host (Railway, Cloudflare Pages, Netlify, S3…).
+> The site uses `output: "export"`, so there's no Next.js server in production: `web/out/` can be served by any static host.
+
+## Deploying (Raspberry Pi)
+
+The site runs on the Raspberry Pi `raspi` (10.0.0.190, user `joaoelvas`), next to the Telltale site. Every push to `main` that changes `web/` deploys it: the **Deploy website** workflow (`.github/workflows/deploy-web.yml`) runs on a self-hosted GitHub Actions runner on the Pi (labelled `raspi`, installed in `~/actions-runner-labs` as a service, separate from Telltale's `~/actions-runner` because runners belong to one repo) and calls `web/deploy/deploy.sh`. Run it by hand from **Actions › Deploy website › Run workflow**.
+
+`deploy.sh` copies the checkout to `/opt/venleylabs-web/build` and builds it there, keeping `node_modules` and Next's cache between deploys (`npm ci` only runs when `package-lock.json` changes). It copies `out/` to `/opt/venleylabs-web/releases/<sha>-<time>`, points `/opt/venleylabs-web/current` at it and restarts the `venleylabs-web` systemd service (`web/deploy/venleylabs-web.service`), which runs `serve` on `127.0.0.1:3001` with the headers in `public/serve.json`. If the new release doesn't answer within about a minute, it switches back to the previous one. The last three releases are kept.
+
+`venleylabs.com` and `www.venleylabs.com` are CNAMEs to the Cloudflare Tunnel `telltale-web` (proxied by Cloudflare), whose `/etc/cloudflared/config.yml` sends them to port 3001, so no router ports are open.
+
+Logs: `journalctl -u venleylabs-web -f`. Runner: `cd ~/actions-runner-labs && sudo ./svc.sh status`. Tunnel: `systemctl status cloudflared`. To force a clean install, delete `/opt/venleylabs-web/build`.
 
 ## Repository layout
 
@@ -74,6 +84,7 @@ labs/
     │   ├── globals.css        design tokens and base styles
     │   └── sitemap.ts · robots.ts · icon.svg
     ├── components/         One component and CSS module per section
+    ├── deploy/             Raspberry Pi: deploy.sh (build + switch release), systemd service
     └── lib/
         ├── i18n/en.ts · pt.ts all page copy, typed
         ├── site.ts            domain, email, product links
